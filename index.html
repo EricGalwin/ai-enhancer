@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Enhancer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header>
+        <h1>AI Enhancer</h1>
+    </header>
+
+    <main>
+        <div class="upload-section">
+            <input type="file" id="imageUpload">
+        </div>
+
+        <div class="canvas-container">
+            <div>
+                <h3>Original</h3>
+                <canvas id="originalCanvas"></canvas>
+            </div>
+            <div>
+                <h3>Enhanced</h3>
+                <canvas id="enhancedCanvas"></canvas>
+            </div>
+        </div>
+
+        <div class="controls">
+            <label>Brightness</label><input type="range" id="brightness" min="0" max="200" value="100">
+            <label>Contrast</label><input type="range" id="contrast" min="0" max="200" value="100">
+            <label>Saturation</label><input type="range" id="saturation" min="0" max="200" value="100">
+            <label>Hue</label><input type="range" id="hue" min="0" max="360" value="0">
+            <label>Blur</label><input type="range" id="blur" min="0" max="10" value="0">
+            <label>Noise</label><input type="range" id="noise" min="0" max="50" value="0">
+
+            <label>Filter</label>
+            <select id="filter">
+                <option value="none">None</option>
+                <option value="grayscale">Grayscale</option>
+                <option value="sepia">Sepia</option>
+                <option value="vintage">Vintage</option>
+            </select>
+        </div>
+
+        <div class="button-container">
+            <button id="autoEnhance">Auto Enhance</button>
+            <button id="download">Download Image</button>
+        </div>
+    </main>
+
+    <script src="script.js" defer></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log("Service Worker Registered"))
+                .catch(err => console.log("Service Worker Failed", err));
+        }
+    </script>
+</body>
+</html>
+
+
